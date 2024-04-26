@@ -11,11 +11,14 @@ func main() {
 	var remainingTickets uint = 50
 
 	bookings := []string{}
+
+	greetUsers()
+	
 	fmt.Printf("Welcome to %v booking application\n", conferenceName)
 	fmt.Printf("We have total of %v tickets and %v are still available\n", conferenceTickets, remainingTickets)
 	fmt.Printf("Get your %v tickets here to attend\n", conferenceTickets)
 
-	for remainingTickets > 0 && len(bookings) <50 {
+	for remainingTickets > 0 && len(bookings) < 50 {
 		var firstName string
 		var lastName string
 		var email string
@@ -33,10 +36,9 @@ func main() {
 
 		isValidName := len(firstName) >= 2 && len(lastName) >= 2
 		isValidEmail := strings.Contains(email, "@")
-		isValidTicketNumber:= userTickets > 0 && userTickets <= remainingTickets 
-		
+		isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
 
-		if isValidName && isValidEmail && isValidTicketNumber{
+		if isValidName && isValidEmail && isValidTicketNumber {
 			remainingTickets -= userTickets
 
 			bookings = append(bookings, firstName+" "+lastName)
@@ -58,16 +60,36 @@ func main() {
 				break
 			}
 		} else {
-			if !isValidName{
+			if !isValidName {
 				fmt.Println("First or last name you entered is too short")
 			}
 
-			if !isValidEmail{
+			if !isValidEmail {
 				fmt.Println("Email address you entered does not contain @")
 			}
-			if !isValidTicketNumber{
+			if !isValidTicketNumber {
 				fmt.Println("Number of tickets your entered is invalid")
-			}			
+			}
 		}
 	}
+
+	// city := "London"
+
+	// switch city {
+	// case "New York":
+	// 	//execute code for booking New York conference
+	// case "Singapore", "Hong Kong":
+	// 	//execute code for booking Singapore & Hong Honk conference
+	// case "London", "Berlin":
+	// 	//execute code for booking London & Berlin conference
+	// case "Mexico City":
+	// 	//execute code for booking Mexico City conference
+	// default:
+	// 	fmt.Print("No valid city selected")
+	// }
+}
+
+
+func greetUsers(){
+	fmt.Println("Welcome to our conference")
 }
