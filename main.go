@@ -7,16 +7,12 @@ import (
 
 func main() {
 	conferenceName := "Eleah's Go Conference"
-	const conferenceTickets = 50
+	const conferenceTickets int = 50
 	var remainingTickets uint = 50
 
 	bookings := []string{}
 
-	greetUsers()
-	
-	fmt.Printf("Welcome to %v booking application\n", conferenceName)
-	fmt.Printf("We have total of %v tickets and %v are still available\n", conferenceTickets, remainingTickets)
-	fmt.Printf("Get your %v tickets here to attend\n", conferenceTickets)
+	greetUsers(conferenceName, conferenceTickets, remainingTickets)
 
 	for remainingTickets > 0 && len(bookings) < 50 {
 		var firstName string
@@ -90,6 +86,8 @@ func main() {
 }
 
 
-func greetUsers(){
-	fmt.Println("Welcome to our conference")
+func greetUsers(conferenceName string, conferenceTickets int, remainingTickets uint){
+	fmt.Printf("Welcome to %v booking application\n", conferenceName)
+	fmt.Printf("We have total of %v tickets and %v are still available\n", conferenceTickets, remainingTickets)
+	fmt.Printf("Get your %v tickets here to attend\n", conferenceTickets)
 }
